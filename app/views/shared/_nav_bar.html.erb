@@ -2,7 +2,11 @@
   <div class="container-fluid">
     <%= link_to "Shopazon", root_path, class: "navbar-brand" %>
 
-    <div class="collapse navbar-collapse">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbar">
       <ul class="navbar-nav">
         <li class="nav-item">
           <%= link_to "Home", root_path, class: "nav-link" %>
@@ -11,12 +15,12 @@
           <%= link_to "Products", products_path, class: "nav-link" %>
         </li>
       </ul>
-    </div>
 
-    <ul class="navbar-nav">
-      <li>
-        <%= render "shared/cart_nav_item" %>
-      </li>
-    </ul>
+      <ul class="navbar-nav">
+        <li>
+          <%= render "shared/cart_nav_item" %>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
