@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.0.2"
 
 # Use local checkout of Rails
-gem "rails", path: "../rails/rails"
+gem "rails", "7.0.0.alpha2"
 
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
