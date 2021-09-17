@@ -1,3 +1,3 @@
 <%= link_to root_path, class: "nav-link", id: dom_id(Current.cart, :nav_item) do %>
-  Cart <%= number_to_currency Current.cart.total_price, unit: '£' %> <span class="badge bg-secondary"><%= Current.cart.products.count %></span>
+  Cart <%= number_to_currency Current.cart.total_price, unit: "£" %> <span class="badge bg-secondary"><%= Current.cart.products.count %></span>
 <% end %>

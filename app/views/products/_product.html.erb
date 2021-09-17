@@ -1,0 +1,33 @@
+<div class="col" id="<%= dom_id(product) %>">
+  <div class="card h-100">
+    <div class="card-img-top mt-2 p-4 text-center" style="height: 200px;">
+      <%= image_tag url_for(product.image), class: "mw-100 mh-100" %>
+    </div>
+
+    <div class="card-body">
+      <h1 class="h5 card-title"><%= product.name %></h1>
+
+      <p class="card-text text-muted">
+        <%= number_to_currency product.price, unit: "£" %>
+      </p>
+
+      <p class="card-text">
+        <%= product.description.truncate(120) %>
+      </p>
+    </div>
+
+    <div class="card-footer d-flex align-items-center justify-content-between">
+      <div class="text-success">
+        <% quantity = Current.cart.quantity_of(product) %>
+        <% if quantity > 0 %>
+          <%= quantity %> in cart
+        <% end %>
+      </div>
+
+      <%= form_with scope: :cart_product, url: cart_products_path do |f| %>
+        <%= f.hidden_field :product_id, value: product.id %>
+        <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
