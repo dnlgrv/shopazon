@@ -1,0 +1,5 @@
+<div id="<%= dom_id(cart, :checkout_button) %>">
+  <% if cart.products.count > 0 %>
+    <%= link_to "Check Out", "#", class: "btn w-100 btn-primary" %>
+  <% end %>
+</div>

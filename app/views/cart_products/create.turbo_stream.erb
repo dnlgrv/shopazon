@@ -1,2 +1,9 @@
+<% # Header %>
 <%= turbo_stream.replace dom_id(Current.cart, :nav_item), partial: "shared/cart_nav_item" %>
+
+<% # Page %>
 <%= turbo_stream.replace dom_id(@cart_product.product), partial: "products/product", locals: { product: @cart_product.product } %>
+
+<% # Cart %>
+<%= turbo_stream.replace dom_id(Current.cart, :products), partial: "carts/products", locals: { cart: Current.cart } %>
+<%= turbo_stream.replace dom_id(Current.cart, :checkout_button), partial: "carts/checkout_button", locals: { cart: Current.cart } %>
