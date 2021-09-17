@@ -17,7 +17,10 @@
           </div>
 
           <div class="card-footer">
-            Add to cart button
+            <%= form_with scope: :cart_product, url: cart_products_path do |f| %>
+              <%= f.hidden_field :product_id, value: product.id %>
+              <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+            <% end %>
           </div>
         </div>
       </div>

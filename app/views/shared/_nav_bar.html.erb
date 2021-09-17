@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light mb-3">
   <div class="container-fluid">
     <%= link_to "Shopazon", root_path, class: "navbar-brand" %>
 
@@ -15,9 +15,7 @@
 
     <ul class="navbar-nav">
       <li>
-        <%= link_to root_path, class: "nav-link" do %>
-          Cart <span class="badge bg-secondary">0</span>
-        <% end %>
+        <%= render "shared/cart_nav_item" %>
       </li>
     </ul>
   </div>
