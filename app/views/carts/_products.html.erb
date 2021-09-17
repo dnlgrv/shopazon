@@ -1,5 +1,7 @@
 <div id="<%= dom_id(cart, :products) %>">
-  <% cart.products.each do |product| %>
+  <% cart.cart_products.each do |cart_product| %>
+    <% product = cart_product.product %>
+
     <div class="card mb-3">
       <div class="row g-0 align-items-center">
         <div class="col-md-4 p-4">
@@ -7,6 +9,12 @@
         </div>
 
         <div class="col-md-8">
+          <div class="position-absolute top-0 end-0 p-2">
+            <%= form_with model: cart_product, method: :delete do |f| %>
+              <%= f.submit "", class: "btn btn-close" %>
+            <% end %>
+          </div>
+
           <div class="card-body">
             <h2 class="h5 cart-title"><%= product.name %></h2>
             <p class="card-text text-muted">

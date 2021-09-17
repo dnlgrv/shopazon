@@ -4,7 +4,17 @@ class CartProductsController < ApplicationController
 
     if @cart_product.save
       respond_to do |format|
-        format.turbo_stream
+        format.turbo_stream { render :update_cart }
+      end
+    end
+  end
+
+  def destroy
+    @cart_product = CartProduct.find(params[:id])
+
+    if @cart_product.destroy
+      respond_to do |format|
+        format.turbo_stream { render :update_cart }
       end
     end
   end
