@@ -1,28 +1,34 @@
 <div id="<%= dom_id(cart, :products) %>">
-  <% cart.cart_products.each do |cart_product| %>
-    <% product = cart_product.product %>
+  <% if cart.empty? %>
+    <div class="text-center text-muted my-5">
+      Your shopping cart is empty.
+    </div>
+  <% else %>
+    <% cart.cart_products.each do |cart_product| %>
+      <% product = cart_product.product %>
 
-    <div class="card mb-3">
-      <div class="row g-0 align-items-center">
-        <div class="col-md-4 p-4">
-          <%= image_tag url_for(product.image), class: "img-fluid rounded-start" %>
-        </div>
-
-        <div class="col-md-8">
-          <div class="position-absolute top-0 end-0 p-2">
-            <%= form_with model: cart_product, method: :delete do |f| %>
-              <%= f.submit "", class: "btn btn-close" %>
-            <% end %>
+      <div class="card mb-3">
+        <div class="row g-0 align-items-center">
+          <div class="col-md-4 p-4">
+            <%= image_tag url_for(product.image), class: "img-fluid rounded-start" %>
           </div>
 
-          <div class="card-body">
-            <h2 class="h5 cart-title"><%= product.name %></h2>
-            <p class="card-text text-muted">
-              <%= number_to_currency product.price, unit: "£" %>
-            </p>
+          <div class="col-md-8">
+            <div class="position-absolute top-0 end-0 p-2">
+              <%= form_with model: cart_product, method: :delete do |f| %>
+                <%= f.submit "", class: "btn btn-close" %>
+              <% end %>
+            </div>
+
+            <div class="card-body">
+              <h2 class="h5 cart-title"><%= product.name %></h2>
+              <p class="card-text text-muted">
+                <%= number_to_currency product.price, unit: "£" %>
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
