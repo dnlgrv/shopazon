@@ -1,17 +1,15 @@
-<div class="container-fluid">
-  <h1 class="mb-4">
-    Top Sellers
-  </h1>
+<h1 class="mb-4">
+  Top Sellers
+</h1>
 
-  <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
-    <%= render @top_sellers %>
-  </div>
+<div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+  <%= render partial: "products/product_card", collection: @top_sellers, as: :product %>
+</div>
 
-  <h1 class="mb-4">
-    Just In
-  </h1>
+<h1 class="mb-4">
+  Just In
+</h1>
 
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <%= render @just_in %>
-  </div>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <%= render partial: "products/product_card", collection: @just_in, as: :product %>
 </div>

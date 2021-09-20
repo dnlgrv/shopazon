@@ -1,10 +1,8 @@
-<div class="container-fluid">
-  <h1 class="mb-4">
-    All Products
-    <small class="text-muted">Displaying <%= @products.count %> <%= "product".pluralize(@products.count) %></small>
-  </h1>
+<h1 class="mb-4">
+  All Products
+  <small class="text-muted">Displaying <%= @products.count %> <%= "product".pluralize(@products.count) %></small>
+</h1>
 
-  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
-    <%= render @products %>
-  </div>
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+  <%= render partial: "products/product_card", collection: @products, as: :product %>
 </div>

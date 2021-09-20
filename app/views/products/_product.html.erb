@@ -1,33 +1,34 @@
-<div class="col" id="<%= dom_id(product) %>">
-  <div class="card h-100">
-    <div class="card-img-top mt-2 p-4 text-center" style="height: 200px;">
-      <%= image_tag url_for(product.image), class: "mw-100 mh-100" %>
-    </div>
+<div class="row mt-5 gap-3" id="<%= dom_id(product) %>">
+  <div class="col-0 col-md-3"></div>
 
-    <div class="card-body">
-      <h1 class="h5 card-title"><%= product.name %></h1>
+  <div class="col-12 col-md-3">
+    <%= image_tag url_for(product.image), class: "img-thumbnail p-5" %>
+  </div>
 
-      <p class="card-text text-muted">
-        <%= number_to_currency product.price, unit: "£" %>
-      </p>
+  <div class="col-12 col-md-3">
+    <h1><%= product.name %></h1>
+    <p class="h5 text-muted">
+      <%= number_to_currency product.price, unit: "£" %>
+    </p>
 
-      <p class="card-text">
-        <%= product.description.truncate(120) %>
-      </p>
-    </div>
+    <%= simple_format product.description %>
 
-    <div class="card-footer d-flex align-items-center justify-content-between">
-      <div class="text-success">
+    <div class="d-flex align-items-center gap-2">
+      <div>
+        <%= form_with scope: :cart_product, url: cart_products_path do |f| %>
+          <%= f.hidden_field :product_id, value: product.id %>
+          <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+      <div class="text-muted">
         <% quantity = Current.cart.quantity_of(product) %>
         <% if quantity > 0 %>
           <%= quantity %> in cart
         <% end %>
       </div>
-
-      <%= form_with scope: :cart_product, url: cart_products_path do |f| %>
-        <%= f.hidden_field :product_id, value: product.id %>
-        <%= f.submit "Add to Cart", class: "btn btn-primary" %>
-      <% end %>
     </div>
   </div>
+
+  <div class="col-0 col-md-3"></div>
 </div>
